@@ -91,17 +91,15 @@ function linkedListGenerator() {
     let counter = 0;
 
     while (searchNode) {
-      if (counter === number && searchNode.next !== null) {
-        searchNode = searchNode.next;
-        head = searchNode;
-      }
-      if (counter === number - 1 && searchNode.next !== null) {
+      if (counter === 0 && number === 0 && searchNode.next !== null) {
+        head = searchNode.next;
+        return head;
+      } else if (counter === number - 1 && searchNode.next !== null) {
         searchNode.next = searchNode.next.next;
         if (searchNode.next === null) {
           tail = searchNode;
         }
-
-        return searchNode;
+        return tail;
       } else if (counter !== number - 1 && searchNode.next !== null) {
         counter++;
         searchNode = searchNode.next;
