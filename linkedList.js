@@ -146,7 +146,42 @@ function linkedListGenerator() {
     // }
   };
 
-  const insert = () => {};
+  const insert = (data, number) => {
+    let searchNode = head;
+
+    let counter = 0;
+
+    while (searchNode) {
+      let insertNode = {
+        value: data,
+        next: null
+      };
+
+      if (counter === 0 && number === 0 && searchNode.next !== null) {
+        head = insertNode;
+        head.next = searchNode;
+        return head;
+      } else if (counter === number - 1 && searchNode.next !== null) {
+        savedNode = searchNode.next;
+
+        searchNode.next = null;
+        searchNode.next = insertNode;
+
+        insertNode.next = savedNode;
+
+        if (searchNode.next.next === null) {
+          tail = searchNode.next;
+        }
+
+        return tail;
+      } else if (counter !== number - 1 && searchNode.next !== null) {
+        counter++;
+        searchNode = searchNode.next;
+      } else {
+        return false;
+      }
+    }
+  };
 
   return {
     getHead,
