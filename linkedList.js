@@ -113,11 +113,8 @@ function linkedListGenerator() {
         searchNode.next = insertNode;
         insertNode.next = savedNode;
 
-        //If the node after the current node does not exist, then it will become the tail
-        if (searchNode.next.next === null) {
-          tail = searchNode.next;
-        }
-        return tail;
+        //We do not need a condition to check for the tail(differ from the remove) because insert will never insert at the tail position. If the method takes the very last nth position, it will just take the nth position and "push" the tail to the right where the tail will be the same.
+        return insertNode;
 
         //This if is where the loop will continue to iteriate through each node until the counter is equal to the number-1.
         //eg if the loop is trying to insert at 3, it needs to equal 2 first and until that point searchNode will keep changing to searchNode.next, searchNode.next.next, searchNode.next.next.next, etc.
