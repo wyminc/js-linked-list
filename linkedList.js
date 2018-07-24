@@ -100,6 +100,7 @@ function linkedListGenerator() {
       return head;
 
       //This will be insertting everythign else by assinging the previous node's next as the new node that is being insertted and the new node.next as the current node
+      //We do not need a condition to check for the tail(differ from the remove) because insert will never insert at the tail position. If the method takes the very last nth position, it will just take the nth position and "push" the tail to the right where the tail will be the same.
     } else {
       prevNode.next = newNode;
       newNode.next = currentNode;
