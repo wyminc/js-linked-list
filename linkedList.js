@@ -52,7 +52,7 @@ function linkedListGenerator() {
   };
 
   const remove = number => {
-    var searchNode = head;
+    let searchNode = head;
 
     let counter = 0;
 
