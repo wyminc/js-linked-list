@@ -52,19 +52,27 @@ function linkedListGenerator() {
   };
 
   const remove = number => {
+    //These are variables that are stored with objects used to refernece later on in the if statement
     const prevNode = get(number - 1);
     const currentNode = get(number);
     const nextNode = get(number + 1);
 
+    //This if is to check if the number we are trying to remove exist
     if (!currentNode) {
       return false;
+
+      //This will check if the node being removed is the head, then set the node after as the head.
     } else if (head === currentNode && !prevNode) {
       head = nextNode;
       return head;
+
+      //This will check if the node being removed is at the end, by checking if the node after it exists. If it doesnt exist, then the node before the removed node will be set as the tail
     } else if (!nextNode) {
       prevNode.next = null;
       tail = prevNode;
       return tail;
+
+      //This will just remove the node and set the next node in place of the node being removed so that it links up with the previous node
     } else {
       prevNode.next = nextNode;
       return nextNode;
@@ -81,19 +89,20 @@ function linkedListGenerator() {
     const prevNode = get(number - 1);
     const currentNode = get(number);
 
+    //This if is to check if the number we are trying insert at exists
     if (!currentNode) {
       return false;
+
+      //This will check if the node being looked at is the head, then insert the new node as the new head
     } else if (head === currentNode && !prevNode) {
       head = newNode;
       head.next = currentNode;
       return head;
-    } else if (!currentNode) {
-      prevNode.next = newNode;
-      tail = newNode;
-      return tail;
+
+      //This will be insertting everythign else by assinging the previous node's next as the new node that is being insertted and the new node.next as the current node
     } else {
-      newNode.next = currentNode;
       prevNode.next = newNode;
+      newNode.next = currentNode;
       return newNode;
     }
   };
